@@ -31,8 +31,6 @@ namespace AnimalShelter
         /// If "Dog" is selected in the animalTypeCombobox then a Dog object should be created.
         /// If "Cat" is selected in the animalTypeCombobox then a Cat object should be created.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void createAnimalButton_Click(object sender, EventArgs e)
         {
             // TODO: See method description
@@ -41,8 +39,6 @@ namespace AnimalShelter
         /// <summary>
         /// Show the info of the animal referenced by the 'animal' field. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void showInfoButton_Click(object sender, EventArgs e)
         {
             // TODO: See method description

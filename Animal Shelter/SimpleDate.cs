@@ -17,17 +17,6 @@ namespace AnimalShelter
         private DateTime date;
 
         /// <summary>
-        /// Creates a SimpleDate object whicht stores the given date.
-        /// </summary>
-        /// <param name="day">The day of the month</param>
-        /// <param name="month">The month of the year</param>
-        /// <param name="year">The year</param>
-        public SimpleDate(int day, int month, int year)
-        {
-            date = new DateTime(year, month, day);
-        }
-
-        /// <summary>
         /// The day of the month
         /// </summary>
         public int Day
@@ -52,7 +41,18 @@ namespace AnimalShelter
         }
 
         /// <summary>
-        /// Get the tumber of days between this objects date and the given date.
+        /// Creates a SimpleDate object whicht stores the given date.
+        /// </summary>
+        /// <param name="day">The day of the month</param>
+        /// <param name="month">The month of the year</param>
+        /// <param name="year">The year</param>
+        public SimpleDate(int day, int month, int year)
+        {
+            date = new DateTime(year, month, day);
+        }
+
+        /// <summary>
+        /// Get the number of days between this object's date and the given date.
         /// </summary>
         /// <param name="date">The end date.</param>
         /// <returns>The number of days between this date and endDate.</returns>
