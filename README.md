@@ -60,7 +60,7 @@ Het klassediagram van de code:
  benaderen vanuit het `animal` field? Waarom?
 
 
-## Meerdere dieren administratie
+## Meerdere dieren administreren
 
 Hiervoor heb je de basis gelegd voor een administratie van een dierenasiel. De
 administratie had de beperking dat er maar één dier in opgeslagen kon worden.
