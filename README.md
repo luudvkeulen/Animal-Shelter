@@ -59,3 +59,55 @@ Het klassediagram van de code:
  specifieke properties van de hond (`LastWalkDate`) of de kat (`BadHabits`)
  benaderen vanuit het `animal` field? Waarom?
 
+
+## Meerdere dieren administratie
+
+Hiervoor heb je de basis gelegd voor een administratie van een dierenasiel. De
+administratie had de beperking dat er maar één dier in opgeslagen kon worden.
+Niet erg praktisch. De klant heeft het proof of concept gezien en wil verder
+met de volgende stap. Hij wil meerdere dieren in de administratie op kunnen
+slaan. Ook wil hij dieren in de administratie terug kunnen vinden met het
+registratienummer van de chip, dieren kunnen verwijderen en dieren kunnen
+toevoegen. Verder moet men de reservering van een dier aan kunnen passen.
+
+Op basis hiervan wordt het klassendiagram als volgt aangepast:
+
+![Klassendiagram Dierenasiel applicatie v2](class_diagram_02.png)
+
+ 1. Werk verder in het project wat je eerder gemaakt hebt.
+ 1. Maak de `Administration` klasse uit het klassendiagram. Voor de methoden
+    kun je de volgende beschrijving gebruiken als richtlijn bij het
+    implementeren:
+
+    * `Add(animal: Animal): bool` - Deze methode voegt een dier toe aan de
+      administratie. Een dier mag alleen toegevoegd worden als er nog geen
+      ander dier is met hetzelfde chipnummer. De returnwaarde geeft aan of het
+      toevoegen gelukt is.
+    * `RemoveAnimal(chipRegistrationNumber: string): bool` - Deze methode
+      verwijdert het dier met het opgegeven chipnummer. Indien er geen dier is
+      met het opgegeven chipnummer dan wordt er niets gedaan. De returnwaarde
+      geeft aan of het verwijderen gelukt is.
+    * `FindAnimal(chipRegistrationNumber: string): Animal` - Deze methode zoekt
+      het dier met het opgegeven chipnummer. De returnwaarde bevat het dier
+      indien gevonden of null indien niet gevonden.
+
+ 1. Gebruik de `Administration` klasse in de `AdministrationForm` klasse zodat
+    je vanuit de form de administratie met dieren kunt gebruiken. Je eerste
+    stap moet hierbij zijn het verwijderen van het dataveld `animal` uit de
+    `AdministrationForm` klasse. Gebruik de `Administration` klasse in plaats
+    daarvan, zoals aangegeven in het klassendiagram. 
+
+ 1. Pas vervolgens de user interface en de code van de `AdministrationForm`
+    klasse aan, zodat de gebruiker de volgende taken kan uitvoeren met de form:
+
+    *	Een hond of een kat toevoegen aan de administratie.
+    *	Een hond of een kat verwijderen uit de administratie.
+    *	Een hond of kat reserveren of vrijgeven voor reserveren.
+
+    De user interface moet altijd alle dieren die in de administratie staan op
+    het scherm tonen. Dit moet gebeuren in 2 lijsten: één met gereserveerde
+    dieren en één met niet gereserveerde dieren.
+
+ 1. Zorg ervoor dat er bij het opstarten van de applicatie al huisdieren in de
+    administratie zitten.
+
