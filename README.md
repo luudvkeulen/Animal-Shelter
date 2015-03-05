@@ -78,7 +78,6 @@ Op basis hiervan wordt het klassendiagram als volgt aangepast:
  1. Maak de `Administration` klasse uit het klassendiagram. Voor de methoden
     kun je de volgende beschrijving gebruiken als richtlijn bij het
     implementeren:
-
     * `Add(animal: Animal): bool` - Deze methode voegt een dier toe aan de
       administratie. Een dier mag alleen toegevoegd worden als er nog geen
       ander dier is met hetzelfde chipnummer. De returnwaarde geeft aan of het
@@ -99,7 +98,6 @@ Op basis hiervan wordt het klassendiagram als volgt aangepast:
 
  1. Pas vervolgens de user interface en de code van de `AdministrationForm`
     klasse aan, zodat de gebruiker de volgende taken kan uitvoeren met de form:
-
     *	Een hond of een kat toevoegen aan de administratie.
     *	Een hond of een kat verwijderen uit de administratie.
     *	Een hond of kat reserveren of vrijgeven voor reserveren.
@@ -110,4 +108,3 @@ Op basis hiervan wordt het klassendiagram als volgt aangepast:
 
  1. Zorg ervoor dat er bij het opstarten van de applicatie al huisdieren in de
     administratie zitten.
-
