@@ -94,7 +94,7 @@ Op basis hiervan wordt het klassendiagram als volgt aangepast:
     je vanuit de form de administratie met dieren kunt gebruiken. Je eerste
     stap moet hierbij zijn het verwijderen van het dataveld `animal` uit de
     `AdministrationForm` klasse. Gebruik de `Administration` klasse in plaats
-    daarvan, zoals aangegeven in het klassendiagram. 
+    daarvan, zoals aangegeven in het klassendiagram.
 
  1. Pas vervolgens de user interface en de code van de `AdministrationForm`
     klasse aan, zodat de gebruiker de volgende taken kan uitvoeren met de form:
@@ -108,3 +108,11 @@ Op basis hiervan wordt het klassendiagram als volgt aangepast:
 
  1. Zorg ervoor dat er bij het opstarten van de applicatie al huisdieren in de
     administratie zitten.
+
+
+## Het vervolg
+
+Heb je alle wijzigingen voor deze week afgerond, ga dan verder met [de
+opdrachten voor week 5](Week5.md).
+
+
