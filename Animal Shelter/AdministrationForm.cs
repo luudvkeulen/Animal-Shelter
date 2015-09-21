@@ -33,7 +33,22 @@ namespace AnimalShelter
         /// </summary>
         private void createAnimalButton_Click(object sender, EventArgs e)
         {
-            // TODO: See method description
+            string selecteditem = animalTypeComboBox.SelectedItem.ToString();
+            string chipnr = txtChipNr.Text;
+            string name = txtName.Text;
+
+            DateTime dateofbirth = dateBirth.Value;
+            SimpleDate simpledateofbirth = new SimpleDate(dateofbirth.Day, dateofbirth.Month, dateofbirth.Year);
+
+            if(selecteditem == "Cat")
+            {
+                animal = new Cat(chipnr, simpledateofbirth, name, txtBadHabits.Text);
+            }
+            else if(selecteditem == "Dog")
+            {
+                SimpleDate simpledatelastwalk = new SimpleDate(dateLastWalk.Value.Day, dateLastWalk.Value.Month, dateLastWalk.Value.Year);
+                animal = new Dog(chipnr, simpledateofbirth, name, simpledatelastwalk);
+            }
         }
 
         /// <summary>
@@ -42,6 +57,25 @@ namespace AnimalShelter
         private void showInfoButton_Click(object sender, EventArgs e)
         {
             // TODO: See method description
+        }
+
+        private void animalTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TypeSelected(animalTypeComboBox.SelectedItem.ToString());
+        }
+
+        private void TypeSelected(string animaltype)
+        {
+            if(animaltype == "Dog")
+            {
+                lblLastWalk.Enabled = dateLastWalk.Enabled = lblLastWalk.Visible = dateLastWalk.Visible = true;
+                lblBadHabits.Enabled = txtBadHabits.Enabled = lblBadHabits.Visible = txtBadHabits.Visible = false;
+            }
+            else if(animaltype == "Cat")
+            {
+                lblLastWalk.Enabled = dateLastWalk.Enabled = lblLastWalk.Visible = dateLastWalk.Visible = false;
+                lblBadHabits.Enabled = txtBadHabits.Enabled = lblBadHabits.Visible = txtBadHabits.Visible = true;
+            }
         }
     }
 }
