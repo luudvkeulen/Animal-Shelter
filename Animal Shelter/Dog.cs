@@ -31,9 +31,9 @@ namespace AnimalShelter
         /// <param name="name">The name of the animal or null if unknown</param>
         /// <param name="lastWalkDate">The date of the last walk with the dog or null if unknown.</param>
         public Dog(string chipRegistrationNumber, SimpleDate dateOfBirth,
-            string name, SimpleDate lastWalkDate)
+            string name, SimpleDate lastWalkDate) : base(chipRegistrationNumber, dateOfBirth, name)
         {
-            // TODO: Modify the constructor. Make sure it initializes all properties of the class.
+            this.LastWalkDate = lastWalkDate;
         }
 
         /// <summary>
