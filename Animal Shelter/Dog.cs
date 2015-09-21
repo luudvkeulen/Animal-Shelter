@@ -52,9 +52,26 @@ namespace AnimalShelter
         /// </returns>
         public override string ToString()
         {
-            // TODO: Put your own code here to make the method return the string specified in the
-            // method description.
-            return null;
+            string returnstring;
+
+            if (IsReserved)
+            {
+                returnstring = string.Format("Dog: {0}, {1}, {2}, reserved, ", ChipRegistrationNumber, DateOfBirth, Name);
+            }
+            else
+            {
+                returnstring = string.Format("Dog: {0}, {1}, {2}, not reserved, ", ChipRegistrationNumber, DateOfBirth, Name);
+            }
+
+            if(LastWalkDate == null)
+            {
+                returnstring = returnstring + "00-00-0000";
+            }
+            else
+            {
+                returnstring = returnstring + LastWalkDate;
+            }
+            return returnstring;
         }
     }
 }
