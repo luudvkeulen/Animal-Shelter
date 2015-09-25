@@ -52,7 +52,7 @@ namespace AnimalShelter
         /// </returns>
         public override string ToString()
         {
-            return base.ToString();
+            return base.ToString() + " " + LastWalkDate;
         }
     }
 }

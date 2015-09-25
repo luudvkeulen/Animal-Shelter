@@ -14,7 +14,8 @@ namespace AnimalShelter
         /// <summary>
         /// The (only) animal in this administration (for now....)
         /// </summary>
-        private Animal animal;
+        //private Animal animal;
+        private Administration administration;
 
         /// <summary>
         /// Creates the form for doing adminstrative tasks
@@ -23,7 +24,8 @@ namespace AnimalShelter
         {
             InitializeComponent();
             animalTypeComboBox.SelectedIndex = 0;
-            animal = null;
+            //animal = null;
+            administration = new Administration();
         }
 
         /// <summary>
