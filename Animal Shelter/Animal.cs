@@ -8,7 +8,7 @@ namespace AnimalShelter
     /// <summary>
     /// Class representing an animal in the shelter.
     /// </summary>
-    class Animal
+    abstract class Animal
     {
         /// <summary>
         /// The maximum length of the chip registration number.

@@ -54,25 +54,7 @@ namespace AnimalShelter
         /// </returns>
         public override string ToString()
         {
-            string returnstring;
-            if (IsReserved)
-            {
-                returnstring = string.Format("Dog: {0}, {1}, {2}, reserved, ", ChipRegistrationNumber, DateOfBirth, Name);
-            }
-            else
-            {
-                returnstring = string.Format("Dog: {0}, {1}, {2}, not reserved, ", ChipRegistrationNumber, DateOfBirth, Name);
-            }
-
-            if(BadHabits == null)
-            {
-                returnstring = returnstring + "none";
-            }
-            else
-            {
-                returnstring = returnstring + BadHabits;
-            }
-            return returnstring;
+            return base.ToString();
         }
     }
 }
