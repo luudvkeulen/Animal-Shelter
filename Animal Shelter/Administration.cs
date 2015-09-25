@@ -7,7 +7,7 @@ namespace AnimalShelter
 {
     public class Administration
     {
-        List<Animal> animals;
+        public List<Animal> animals;
         public Administration()
         {
             animals = new List<Animal>();
@@ -15,17 +15,29 @@ namespace AnimalShelter
 
         public bool Add(Animal animal)
         {
-            return false;
+            if(animals.Exists(a => a.ChipRegistrationNumber == animal.ChipRegistrationNumber))
+            {
+                return false;
+            }
+            animals.Add(animal);
+            return true;
         }
 
         public bool RemoveAnimal(string chipRegistrationNumber)
         {
-            return false;
+            bool AnimalRemoved = false;
+            Animal animal = animals.Find(a => a.ChipRegistrationNumber == chipRegistrationNumber);
+            if(animal != null)
+            {
+                animals.Remove(animal);
+                AnimalRemoved = true;
+            }
+            return AnimalRemoved;
         }
 
         public Animal FindAnimal(string chipRegistrationNumber)
         {
-            return null;
+            return animals.Find(a => a.ChipRegistrationNumber == chipRegistrationNumber);
         }
     }
 }
