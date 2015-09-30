@@ -33,7 +33,7 @@ namespace AnimalShelter
         /// <param name="badHabits">The nasty habbits of the cat (e.g. "scratches the couch")
         ///                           or null if none.</param>
         public Cat(string chipRegistrationNumber, SimpleDate dateOfBirth,
-            string name, string badHabits) : base(chipRegistrationNumber, dateOfBirth, name)
+            string name, string badHabits, int price) : base(chipRegistrationNumber, dateOfBirth, name, price)
         {
             this.BadHabits = badHabits;
         }

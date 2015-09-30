@@ -8,7 +8,7 @@ namespace AnimalShelter
     /// <summary>
     /// Class representing an animal in the shelter.
     /// </summary>
-    public abstract class Animal
+    public abstract class Animal : Prijsbaar
     {
         /// <summary>
         /// The maximum length of the chip registration number.
@@ -20,6 +20,11 @@ namespace AnimalShelter
         private SimpleDate dateOfBirth;
         private string name;
         private bool isReserved;
+
+        public int Price
+        {
+            get; set;
+        }
 
         /// <summary>
         /// A five digit number containing the registration number of the animal.
@@ -65,7 +70,7 @@ namespace AnimalShelter
         /// becomes "12345"</param>
         /// <param name="dateOfBirth">The date of birth of the animal or null if unknown</param>
         /// <param name="name">The name of the animal or null if unknown</param>
-        public Animal(string chipRegistrationNumber, SimpleDate dateOfBirth, string name)
+        public Animal(string chipRegistrationNumber, SimpleDate dateOfBirth, string name, int price)
         {
             if (chipRegistrationNumber.Length < chipRegistrationNumberMaxLength)
             {
@@ -84,6 +89,7 @@ namespace AnimalShelter
 
             this.dateOfBirth = dateOfBirth;
             this.name = name;
+            Price = price;
             isReserved = false;
         }
 

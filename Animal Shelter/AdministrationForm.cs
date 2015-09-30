@@ -32,7 +32,7 @@ namespace AnimalShelter
         {
             Random r = new Random();
             //Not reserved
-            administration.Add(new Dog(r.Next(100, 1000000).ToString(), GenerateSimpleDate(), "Bart", GenerateSimpleDate()));
+            /*administration.Add(new Dog(r.Next(100, 1000000).ToString(), GenerateSimpleDate(), "Bart", GenerateSimpleDate()));
             administration.Add(new Dog(r.Next(100, 1000000).ToString(), GenerateSimpleDate(), "Jan", GenerateSimpleDate()));
             administration.Add(new Dog(r.Next(100, 1000000).ToString(), GenerateSimpleDate(), "Jaap", GenerateSimpleDate()));
             administration.Add(new Dog(r.Next(100, 1000000).ToString(), GenerateSimpleDate(), "Roos", GenerateSimpleDate()));
@@ -46,7 +46,7 @@ namespace AnimalShelter
             Cat cat = new Cat(r.Next(100, 1000000).ToString(), GenerateSimpleDate(), "Karel", "Test");
             dog.IsReserved = cat.IsReserved = true;
             administration.Add(dog);
-            administration.Add(cat);
+            administration.Add(cat);*/
         }
 
         private SimpleDate GenerateSimpleDate()
@@ -76,7 +76,18 @@ namespace AnimalShelter
 
             if(selecteditem == "Cat")
             {
-                if(administration.Add(new Cat(chipnr, simpledateofbirth, name, txtBadHabits.Text)))
+                int price = 60;
+                int badhabitssize = txtBadHabits.Text.Count();
+                if(price - badhabitssize < 20)
+                {
+                    price = 20;
+                }
+                else
+                {
+                    price = price - badhabitssize;
+                }
+
+                if (administration.Add(new Cat(chipnr, simpledateofbirth, name, txtBadHabits.Text, price)))
                 {
                     FillLists();
                 }
@@ -88,7 +99,18 @@ namespace AnimalShelter
             else if(selecteditem == "Dog")
             {
                 SimpleDate simpledatelastwalk = new SimpleDate(dateLastWalk.Value.Day, dateLastWalk.Value.Month, dateLastWalk.Value.Year);
-                if(administration.Add(new Dog(chipnr, simpledateofbirth, name, simpledatelastwalk)))
+                int price;
+
+                if (Convert.ToInt32(chipnr) < 50000)
+                {
+                    price = 200;
+                }
+                else
+                {
+                    price = 350;
+                }
+                
+                if(administration.Add(new Dog(chipnr, simpledateofbirth, name, simpledatelastwalk, price)))
                 {
                     FillLists();
                 }
