@@ -63,7 +63,7 @@ namespace AnimalShelter
         private void createAnimalButton_Click(object sender, EventArgs e)
         {
             string selecteditem = animalTypeComboBox.SelectedItem.ToString();
-            string chipnr = txtChipNr.Text;
+            string chipnr = numChipNr.ToString();
             if(chipnr == "")
             {
                 MessageBox.Show("Voer een chipnummer in!");

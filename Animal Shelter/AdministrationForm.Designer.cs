@@ -30,7 +30,6 @@
         {
             this.animalTypeComboBox = new System.Windows.Forms.ComboBox();
             this.createAnimalButton = new System.Windows.Forms.Button();
-            this.txtChipNr = new System.Windows.Forms.TextBox();
             this.dateBirth = new System.Windows.Forms.DateTimePicker();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,6 +47,8 @@
             this.btnStopReservation = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.numChipNr = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numChipNr)).BeginInit();
             this.SuspendLayout();
             // 
             // animalTypeComboBox
@@ -58,7 +59,7 @@
             "Cat",
             "Dog"});
             this.animalTypeComboBox.Location = new System.Drawing.Point(167, 175);
-            this.animalTypeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.animalTypeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.animalTypeComboBox.Name = "animalTypeComboBox";
             this.animalTypeComboBox.Size = new System.Drawing.Size(154, 24);
             this.animalTypeComboBox.TabIndex = 0;
@@ -67,7 +68,7 @@
             // createAnimalButton
             // 
             this.createAnimalButton.Location = new System.Drawing.Point(329, 175);
-            this.createAnimalButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.createAnimalButton.Margin = new System.Windows.Forms.Padding(4);
             this.createAnimalButton.Name = "createAnimalButton";
             this.createAnimalButton.Size = new System.Drawing.Size(85, 28);
             this.createAnimalButton.TabIndex = 1;
@@ -75,20 +76,12 @@
             this.createAnimalButton.UseVisualStyleBackColor = true;
             this.createAnimalButton.Click += new System.EventHandler(this.createAnimalButton_Click);
             // 
-            // txtChipNr
-            // 
-            this.txtChipNr.Location = new System.Drawing.Point(167, 85);
-            this.txtChipNr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtChipNr.Name = "txtChipNr";
-            this.txtChipNr.Size = new System.Drawing.Size(247, 22);
-            this.txtChipNr.TabIndex = 3;
-            // 
             // dateBirth
             // 
             this.dateBirth.CustomFormat = "dd-MM-yyyy";
             this.dateBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateBirth.Location = new System.Drawing.Point(167, 53);
-            this.dateBirth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateBirth.Margin = new System.Windows.Forms.Padding(4);
             this.dateBirth.Name = "dateBirth";
             this.dateBirth.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateBirth.ShowUpDown = true;
@@ -99,7 +92,7 @@
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(167, 21);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(247, 22);
             this.txtName.TabIndex = 5;
@@ -140,7 +133,7 @@
             this.dateLastWalk.Enabled = false;
             this.dateLastWalk.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateLastWalk.Location = new System.Drawing.Point(167, 117);
-            this.dateLastWalk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateLastWalk.Margin = new System.Windows.Forms.Padding(4);
             this.dateLastWalk.Name = "dateLastWalk";
             this.dateLastWalk.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateLastWalk.ShowUpDown = true;
@@ -165,7 +158,7 @@
             // 
             this.txtBadHabits.Enabled = false;
             this.txtBadHabits.Location = new System.Drawing.Point(167, 117);
-            this.txtBadHabits.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBadHabits.Margin = new System.Windows.Forms.Padding(4);
             this.txtBadHabits.Multiline = true;
             this.txtBadHabits.Name = "txtBadHabits";
             this.txtBadHabits.Size = new System.Drawing.Size(247, 50);
@@ -266,11 +259,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // numChipNr
+            // 
+            this.numChipNr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numChipNr.Location = new System.Drawing.Point(171, 87);
+            this.numChipNr.Maximum = new decimal(new int[] {
+            9000000,
+            0,
+            0,
+            0});
+            this.numChipNr.Name = "numChipNr";
+            this.numChipNr.Size = new System.Drawing.Size(243, 22);
+            this.numChipNr.TabIndex = 21;
+            // 
             // AdministrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 275);
+            this.Controls.Add(this.numChipNr);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnStopReservation);
@@ -288,13 +295,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.dateBirth);
-            this.Controls.Add(this.txtChipNr);
             this.Controls.Add(this.createAnimalButton);
             this.Controls.Add(this.animalTypeComboBox);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdministrationForm";
             this.Text = "Animal Shelter Administration";
             this.Shown += new System.EventHandler(this.AdministrationForm_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.numChipNr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,7 +311,6 @@
 
         private System.Windows.Forms.ComboBox animalTypeComboBox;
         private System.Windows.Forms.Button createAnimalButton;
-        private System.Windows.Forms.TextBox txtChipNr;
         private System.Windows.Forms.DateTimePicker dateBirth;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
@@ -322,6 +328,7 @@
         private System.Windows.Forms.Button btnStopReservation;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown numChipNr;
     }
 }
 

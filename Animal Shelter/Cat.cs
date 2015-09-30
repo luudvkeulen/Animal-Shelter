@@ -68,7 +68,7 @@ namespace AnimalShelter
         /// </returns>
         public override string ToString()
         {
-            return base.ToString() + " " + BadHabits;
+            return base.ToString() + ", " + Price + ", " + BadHabits;
         }
     }
 }
