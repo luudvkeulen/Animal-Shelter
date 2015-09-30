@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AnimalShelter
 {
-    class Cat : Animal
+    class Cat : Animal, Prijsbaar
     {
         // Backing field for property, see actual properties for their description.
         private string badHabits;
@@ -18,6 +18,11 @@ namespace AnimalShelter
         {
             get { return badHabits; }
             set { badHabits = value; }
+        }
+
+        public int Price
+        {
+            get; set;
         }
 
         /// <summary>
@@ -33,9 +38,18 @@ namespace AnimalShelter
         /// <param name="badHabits">The nasty habbits of the cat (e.g. "scratches the couch")
         ///                           or null if none.</param>
         public Cat(string chipRegistrationNumber, SimpleDate dateOfBirth,
-            string name, string badHabits, int price) : base(chipRegistrationNumber, dateOfBirth, name, price)
+            string name, string badHabits, int badhabitslength) : base(chipRegistrationNumber, dateOfBirth, name)
         {
             this.BadHabits = badHabits;
+            int price = 60;
+            if (price - badhabitslength < 20)
+            {
+                Price = 20;
+            }
+            else
+            {
+                Price = price - badhabitslength;
+            }
         }
 
         /// <summary>

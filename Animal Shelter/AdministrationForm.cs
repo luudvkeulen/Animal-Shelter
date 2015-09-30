@@ -76,18 +76,9 @@ namespace AnimalShelter
 
             if(selecteditem == "Cat")
             {
-                int price = 60;
-                int badhabitssize = txtBadHabits.Text.Count();
-                if(price - badhabitssize < 20)
-                {
-                    price = 20;
-                }
-                else
-                {
-                    price = price - badhabitssize;
-                }
+                int badhabitslength = txtBadHabits.Text.Length;
 
-                if (administration.Add(new Cat(chipnr, simpledateofbirth, name, txtBadHabits.Text, price)))
+                if (administration.Add(new Cat(chipnr, simpledateofbirth, name, txtBadHabits.Text, badhabitslength)))
                 {
                     FillLists();
                 }
@@ -99,18 +90,8 @@ namespace AnimalShelter
             else if(selecteditem == "Dog")
             {
                 SimpleDate simpledatelastwalk = new SimpleDate(dateLastWalk.Value.Day, dateLastWalk.Value.Month, dateLastWalk.Value.Year);
-                int price;
-
-                if (Convert.ToInt32(chipnr) < 50000)
-                {
-                    price = 200;
-                }
-                else
-                {
-                    price = 350;
-                }
                 
-                if(administration.Add(new Dog(chipnr, simpledateofbirth, name, simpledatelastwalk, price)))
+                if(administration.Add(new Dog(chipnr, simpledateofbirth, name, simpledatelastwalk)))
                 {
                     FillLists();
                 }

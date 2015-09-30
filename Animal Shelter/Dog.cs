@@ -19,6 +19,11 @@ namespace AnimalShelter
             set { lastWalkDate = value; }
         }
 
+        public int Price
+        {
+            get; set;
+        }
+
         /// <summary>
         /// Creates a dog.
         /// </summary>
@@ -31,9 +36,17 @@ namespace AnimalShelter
         /// <param name="name">The name of the animal or null if unknown</param>
         /// <param name="lastWalkDate">The date of the last walk with the dog or null if unknown.</param>
         public Dog(string chipRegistrationNumber, SimpleDate dateOfBirth,
-            string name, SimpleDate lastWalkDate, int price) : base(chipRegistrationNumber, dateOfBirth, name, price)
+            string name, SimpleDate lastWalkDate) : base(chipRegistrationNumber, dateOfBirth, name)
         {
             this.LastWalkDate = lastWalkDate;
+            if (Convert.ToInt32(chipRegistrationNumber) < 50000)
+            {
+                Price = 200;
+            }
+            else
+            {
+                Price = 350;
+            }
         }
 
         /// <summary>
