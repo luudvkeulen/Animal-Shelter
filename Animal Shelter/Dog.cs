@@ -19,9 +19,24 @@ namespace AnimalShelter
             set { lastWalkDate = value; }
         }
 
+        private int price;
         public int Price
         {
-            get; set;
+            get
+            {
+                return price;
+            }
+            set
+            {
+                if (Convert.ToInt32(ChipRegistrationNumber) < 50000)
+                {
+                    price = 200;
+                }
+                else
+                {
+                    price = 350;
+                }
+            }
         }
 
         /// <summary>
@@ -38,15 +53,8 @@ namespace AnimalShelter
         public Dog(string chipRegistrationNumber, SimpleDate dateOfBirth,
             string name, SimpleDate lastWalkDate) : base(chipRegistrationNumber, dateOfBirth, name)
         {
-            this.LastWalkDate = lastWalkDate;
-            if (Convert.ToInt32(chipRegistrationNumber) < 50000)
-            {
-                Price = 200;
-            }
-            else
-            {
-                Price = 350;
-            }
+            LastWalkDate = lastWalkDate;
+            Price = 0;
         }
 
         /// <summary>

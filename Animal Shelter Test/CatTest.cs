@@ -29,6 +29,26 @@ namespace Animal_Shelter_Test
             Assert.AreEqual(cat.IsReserved, false);
             Assert.AreEqual(cat.Name, "Henk");
             Assert.AreEqual(cat.Price, 45);
+
+            cat = new Cat("12345", new SimpleDate(12, 03, 2015), "Henk", "Pees everywhere. Bad cat and does not listen really well. Also bites everyone he sees");
+            Assert.AreEqual(cat.BadHabits, "Pees everywhere. Bad cat and does not listen really well. Also bites everyone he sees");
+            Assert.AreEqual(cat.Price, 20);
+
+            cat.IsReserved = true;
+            Assert.AreEqual(cat.IsReserved, true);
+        }
+
+        [TestMethod]
+        public void TestToString()
+        {
+            Cat cat = new Cat("123", new SimpleDate(12, 03, 2015), "Henk", "Pees everywhere");
+            string catstring = cat.ToString();
+            Assert.AreEqual(catstring, "00123, 12-03-2015, Henk, not reserved, 45, Pees everywhere");
+
+            cat = new Cat("12345", null, "", "");
+            cat.IsReserved = true;
+            catstring = cat.ToString();
+            Assert.AreEqual(catstring, "12345, 00-00-0000, noname, reserved, 60, ");
         }
     }
 }
