@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AnimalShelter
 {
-    class Dog : Animal
+    public class Dog : Animal
     {
         // Backing field for property, see actual properties for their description.
         private SimpleDate lastWalkDate;

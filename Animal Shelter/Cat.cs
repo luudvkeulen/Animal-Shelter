@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AnimalShelter
 {
-    class Cat : Animal, Prijsbaar
+    public class Cat : Animal, Prijsbaar
     {
         // Backing field for property, see actual properties for their description.
         private string badHabits;
