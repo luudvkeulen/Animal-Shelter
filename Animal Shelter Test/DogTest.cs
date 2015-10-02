@@ -28,5 +28,25 @@ namespace Animal_Shelter_Test
             dog = new Dog("51000", new SimpleDate(01, 05, 1997), "Peter", new SimpleDate(02, 06, 2011));
             Assert.AreEqual(350, dog.Price);
         }
+
+        [TestMethod]
+        public void TestToString()
+        {
+            Dog dog = new Dog("51000", new SimpleDate(01, 05, 1997), "Peter", new SimpleDate(02, 06, 2011));
+            string dogstring = dog.ToString();
+            Assert.AreEqual("51000, 01-05-1997, Peter, not reserved, 350, 02-06-2011", dogstring);
+
+            dog.IsReserved = true;
+            dogstring = dog.ToString();
+            Assert.AreEqual("51000, 01-05-1997, Peter, reserved, 350, 02-06-2011", dogstring);
+
+            dog = new Dog("51000", new SimpleDate(01, 05, 1997), "", new SimpleDate(02, 06, 2011));
+            dogstring = dog.ToString();
+            Assert.AreEqual("51000, 01-05-1997, noname, not reserved, 350, 02-06-2011", dogstring);
+
+            dog = new Dog("51000", new SimpleDate(01, 05, 1997), null, new SimpleDate(02, 06, 2011));
+            dogstring = dog.ToString();
+            Assert.AreEqual("51000, 01-05-1997, noname, not reserved, 350, 02-06-2011", dogstring);
+        }
     }
 }
