@@ -76,9 +76,7 @@ namespace AnimalShelter
 
             if(selecteditem == "Cat")
             {
-                int badhabitslength = txtBadHabits.Text.Length;
-
-                if (administration.Add(new Cat(chipnr, simpledateofbirth, name, txtBadHabits.Text, badhabitslength)))
+                if (administration.Add(new Cat(chipnr, simpledateofbirth, name, txtBadHabits.Text)))
                 {
                     FillLists();
                 }

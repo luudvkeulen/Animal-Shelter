@@ -25,6 +25,8 @@ namespace AnimalShelter
             get; set;
         }
 
+        private int highestprice = 60;
+
         /// <summary>
         /// Creates a cat.
         /// </summary>
@@ -38,18 +40,24 @@ namespace AnimalShelter
         /// <param name="badHabits">The nasty habbits of the cat (e.g. "scratches the couch")
         ///                           or null if none.</param>
         public Cat(string chipRegistrationNumber, SimpleDate dateOfBirth,
-            string name, string badHabits, int badhabitslength) : base(chipRegistrationNumber, dateOfBirth, name)
+            string name, string badHabits) : base(chipRegistrationNumber, dateOfBirth, name)
         {
-            this.BadHabits = badHabits;
-            int price = 60;
-            if (price - badhabitslength < 20)
+            BadHabits = badHabits;
+            Price = CalculatePrice(badHabits.Length);
+        }
+        
+        private int CalculatePrice(int badhabitslength)
+        {
+            int price;
+            if (highestprice - badhabitslength < 20)
             {
-                Price = 20;
+                price = 20;
             }
             else
             {
-                Price = price - badhabitslength;
+                price = highestprice - badhabitslength;
             }
+            return price;
         }
 
         /// <summary>
