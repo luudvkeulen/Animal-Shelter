@@ -2,24 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace AnimalShelter
 {
+    [DataContract]
     public class Dog : Animal
     {
         // Backing field for property, see actual properties for their description.
+        [DataMember]
         private SimpleDate lastWalkDate;
 
         /// <summary>
         /// The date of the last walk of the dog. Contains null if unknown.
         /// </summary>
+        /// 
         public SimpleDate LastWalkDate
         {
             get { return lastWalkDate; }
             set { lastWalkDate = value; }
         }
 
+        [DataMember]
         private int price;
+
         public int Price
         {
             get

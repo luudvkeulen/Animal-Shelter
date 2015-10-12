@@ -300,6 +300,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdministrationForm";
             this.Text = "Animal Shelter Administration";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdministrationForm_FormClosing);
             this.Shown += new System.EventHandler(this.AdministrationForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.numChipNr)).EndInit();
             this.ResumeLayout(false);

@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace AnimalShelter
 {
+    [DataContract]
     public class Cat : Animal, Prijsbaar
     {
         // Backing field for property, see actual properties for their description.
+        [DataMember]
         private string badHabits;
 
         /// <summary>
         /// Description of the bad habits that the cat shows (e.g. "Scratches the couch").
         /// or null if the cat shows no bad habits.
         /// </summary>
+        /// 
         public string BadHabits
         {
             get { return badHabits; }
             set { badHabits = value; }
         }
 
+        [DataMember]
         public int Price
         {
             get; set;

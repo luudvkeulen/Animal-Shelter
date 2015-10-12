@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Runtime.Serialization;
 
 namespace AnimalShelter
 {
     /// <summary>
     /// Class representing an animal in the shelter.
     /// </summary>
+    /// 
+    [DataContract]
     public abstract class Animal
     {
         /// <summary>
         /// The maximum length of the chip registration number.
         /// </summary>
+        /// 
         private const int chipRegistrationNumberMaxLength = 5;
 
         // Backing fields for properties, see actual properties for their description.
@@ -24,6 +29,8 @@ namespace AnimalShelter
         /// <summary>
         /// A five digit number containing the registration number of the animal.
         /// </summary>
+        /// 
+        [DataMember]
         public string ChipRegistrationNumber
         {
             get { return chipRegistrationNumber; }
@@ -32,6 +39,8 @@ namespace AnimalShelter
         /// <summary>
         /// Date of birth of the animal. Contains null if unknown.
         /// </summary>
+        /// 
+        [DataMember]
         public SimpleDate DateOfBirth
         {
             get { return dateOfBirth; }
@@ -40,6 +49,8 @@ namespace AnimalShelter
         /// <summary>
         /// The name of the animal. Contains null if unknown.
         /// </summary>
+        /// 
+        [DataMember]
         public string Name
         {
             get { return name; }
@@ -49,6 +60,8 @@ namespace AnimalShelter
         /// Is the animal reserved yes or no.
         /// An animal in the shelter can be reserved by the future owner. 
         /// </summary>
+        /// 
+        [DataMember]
         public bool IsReserved
         {
             get { return isReserved; }

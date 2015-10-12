@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
+using System.Runtime.Serialization;
 
 namespace AnimalShelter
 {
@@ -171,6 +173,11 @@ namespace AnimalShelter
         {
             TestData();
             FillLists();
+        }
+
+        private void AdministrationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            administration.SaveAnimals();
         }
     }
 }
