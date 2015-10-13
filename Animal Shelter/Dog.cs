@@ -38,10 +38,7 @@ namespace AnimalShelter
                 {
                     price = 200;
                 }
-                else
-                {
-                    price = 350;
-                }
+                price = 350;
             }
         }
 
