@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
-using System.Runtime.Serialization;
 
 namespace AnimalShelter
 {
@@ -11,7 +9,7 @@ namespace AnimalShelter
     /// Class representing an animal in the shelter.
     /// </summary>
     /// 
-    [DataContract]
+    [Serializable]
     public abstract class Animal
     {
         /// <summary>
@@ -21,39 +19,46 @@ namespace AnimalShelter
         private const int chipRegistrationNumberMaxLength = 5;
 
         // Backing fields for properties, see actual properties for their description.
+        //[DataMember]
         private string chipRegistrationNumber;
+        //[DataMember]
         private SimpleDate dateOfBirth;
+        //[DataMember]
         private string name;
+        //[DataMember]
         private bool isReserved;
 
         /// <summary>
         /// A five digit number containing the registration number of the animal.
         /// </summary>
         /// 
-        [DataMember]
+        //[DataMember]
         public string ChipRegistrationNumber
         {
             get { return chipRegistrationNumber; }
+            //private set { chipRegistrationNumber = value; }
         }
 
         /// <summary>
         /// Date of birth of the animal. Contains null if unknown.
         /// </summary>
         /// 
-        [DataMember]
+        //[DataMember]
         public SimpleDate DateOfBirth
         {
             get { return dateOfBirth; }
+            //private set { DateOfBirth = value; }
         }
 
         /// <summary>
         /// The name of the animal. Contains null if unknown.
         /// </summary>
         /// 
-        [DataMember]
+        //[DataMember]
         public string Name
         {
             get { return name; }
+            //private set { name = value; }
         }
 
         /// <summary>
@@ -61,7 +66,7 @@ namespace AnimalShelter
         /// An animal in the shelter can be reserved by the future owner. 
         /// </summary>
         /// 
-        [DataMember]
+        //[DataMember]
         public bool IsReserved
         {
             get { return isReserved; }

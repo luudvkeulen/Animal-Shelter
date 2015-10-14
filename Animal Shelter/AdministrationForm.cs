@@ -28,6 +28,7 @@ namespace AnimalShelter
             InitializeComponent();
             animalTypeComboBox.SelectedIndex = 0;
             administration = new Administration();
+            administration.ReadAnimals();
         }
 
         private void TestData()
@@ -65,7 +66,7 @@ namespace AnimalShelter
         private void createAnimalButton_Click(object sender, EventArgs e)
         {
             string selecteditem = animalTypeComboBox.SelectedItem.ToString();
-            string chipnr = numChipNr.ToString();
+            string chipnr = numChipNr.Value.ToString();
             if(chipnr == "")
             {
                 MessageBox.Show("Voer een chipnummer in!");

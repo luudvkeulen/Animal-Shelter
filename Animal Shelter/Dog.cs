@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Runtime.Serialization;
 
 namespace AnimalShelter
 {
-    [DataContract]
+    [Serializable]
     public class Dog : Animal
     {
         // Backing field for property, see actual properties for their description.
-        [DataMember]
         private SimpleDate lastWalkDate;
 
         /// <summary>
@@ -23,7 +21,6 @@ namespace AnimalShelter
             set { lastWalkDate = value; }
         }
 
-        [DataMember]
         private int price;
 
         public int Price
@@ -38,7 +35,10 @@ namespace AnimalShelter
                 {
                     price = 200;
                 }
-                price = 350;
+                else
+                {
+                    price = 350;
+                }
             }
         }
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Xml;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace AnimalShelter
 {
@@ -44,18 +46,26 @@ namespace AnimalShelter
 
         public void SaveAnimals()
         {
-            using (FileStream FS = new FileStream("objects.xml", FileMode.Create, FileAccess.Write))
+            using (FileStream FS = new FileStream("objects.bin", FileMode.Create, FileAccess.Write))
             {
-                DataContractSerializer DCSCat = new DataContractSerializer(typeof(Cat));
-                foreach(Animal animal in animals)
+                BinaryFormatter BF = new BinaryFormatter();
+                BF.Serialize(FS, animals);
+            }
+        }
+
+        public void ReadAnimals()
+        {
+            try
+            {
+                using (FileStream FS = new FileStream("objects.bin", FileMode.Open, FileAccess.Read))
                 {
-                    if(animal is Cat)
-                    {
-                        Cat cat = (Cat)animal;
-                        DCSCat.WriteObject(FS, cat);
-                    }
-                    //DCS.WriteObject(FS, animal);
+                    BinaryFormatter BF = new BinaryFormatter();
+                    animals = (List<Animal>)BF.Deserialize(FS);
                 }
+            }
+            catch (FileNotFoundException FNFE)
+            {
+                Console.WriteLine(FNFE.Message);
             }
         }
     }

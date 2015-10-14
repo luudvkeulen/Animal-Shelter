@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Runtime.Serialization;
 
 namespace AnimalShelter
 {
-    [DataContract]
+    [Serializable]
     public class Cat : Animal, Prijsbaar
     {
         // Backing field for property, see actual properties for their description.
-        [DataMember]
         private string badHabits;
 
         /// <summary>
@@ -24,7 +21,6 @@ namespace AnimalShelter
             set { badHabits = value; }
         }
 
-        [DataMember]
         public int Price
         {
             get; set;
