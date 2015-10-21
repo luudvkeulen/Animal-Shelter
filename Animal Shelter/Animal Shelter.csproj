@@ -51,22 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administration.cs" />
-    <Compile Include="AdministrationForm.cs">
+    <Compile Include="Logic\Administration.cs" />
+    <Compile Include="Forms\AdministrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministrationForm.Designer.cs">
+    <Compile Include="Forms\AdministrationForm.Designer.cs">
       <DependentUpon>AdministrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Animal.cs" />
-    <Compile Include="Cat.cs" />
-    <Compile Include="Database.cs" />
-    <Compile Include="Prijsbaar.cs" />
-    <Compile Include="SimpleDate.cs" />
-    <Compile Include="Dog.cs" />
+    <Compile Include="Models\Animal.cs" />
+    <Compile Include="Models\Cat.cs" />
+    <Compile Include="Data\Database.cs" />
+    <Compile Include="Models\Prijsbaar.cs" />
+    <Compile Include="Models\SimpleDate.cs" />
+    <Compile Include="Models\Dog.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AdministrationForm.resx">
+    <EmbeddedResource Include="Forms\AdministrationForm.resx">
       <DependentUpon>AdministrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -90,6 +90,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
