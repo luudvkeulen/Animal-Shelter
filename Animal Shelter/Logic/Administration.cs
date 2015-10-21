@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Oracle.ManagedDataAccess.Client;
 
 namespace AnimalShelter
 {
@@ -42,28 +43,82 @@ namespace AnimalShelter
             return animals.Find(a => a.ChipRegistrationNumber == chipRegistrationNumber);
         }
 
-        public void SaveAnimals()
+        public void SaveAnimals(bool local)
         {
-            using (FileStream FS = new FileStream("objects.bin", FileMode.Create, FileAccess.Write))
+            if (local)
             {
-                BinaryFormatter BF = new BinaryFormatter();
-                BF.Serialize(FS, animals);
+                using (FileStream FS = new FileStream("objects.bin", FileMode.Create, FileAccess.Write))
+                {
+                    BinaryFormatter BF = new BinaryFormatter();
+                    BF.Serialize(FS, animals);
+                }
+            }
+            else
+            {
+                
             }
         }
 
-        public void ReadAnimals()
+        public void ReadAnimals(bool local)
         {
-            try
+            if (local)
             {
-                using (FileStream FS = new FileStream("objects.bin", FileMode.Open, FileAccess.Read))
+                try
                 {
-                    BinaryFormatter BF = new BinaryFormatter();
-                    animals = (List<Animal>)BF.Deserialize(FS);
+                    using (FileStream FS = new FileStream("objects.bin", FileMode.Open, FileAccess.Read))
+                    {
+                        BinaryFormatter BF = new BinaryFormatter();
+                        animals = (List<Animal>)BF.Deserialize(FS);
+                    }
+                }
+                catch (FileNotFoundException FNFE)
+                {
+                    Console.WriteLine(FNFE.Message);
                 }
             }
-            catch (FileNotFoundException FNFE)
+            else
             {
-                Console.WriteLine(FNFE.Message);
+                using (OracleConnection connection = Database.Connection)
+                {
+                    string sqlquery = "SELECT CHIPREGISTRATIONNUMBER, DATEOFBIRTH, NAME, RESERVED, PRICE, LASTWALKDATE, BADHABITS FROM ANIMALS";
+                    OracleCommand OC = new OracleCommand(sqlquery, connection);
+                    OracleDataReader ODR = OC.ExecuteReader();
+
+                    string ChipRegistrationNumber = "";
+                    string Name = "";
+                    string BadHabits = "";
+                    SimpleDate DateOfBirth = null;
+                    SimpleDate LastWalkDate = null;
+                    bool Reserved = false;
+                    decimal Price = 0;
+
+                    //List<Animal> animal = new List<Animal>();
+
+                    while (ODR.Read())
+                    {
+                        ChipRegistrationNumber = ODR["CHIPREGISTRATIONNUMBER"].ToString();
+                        Name = ODR["NAME"].ToString();
+                        BadHabits = ODR["BADHABITS"].ToString();
+
+                        DateTime DT = DateTime.Parse(ODR["DATEOFBIRTH"].ToString());
+                        DateOfBirth = new SimpleDate(DT.Day, DT.Month, DT.Year);
+
+                        DT = DateTime.Parse(ODR["LASTWALKDATE"].ToString());
+                        LastWalkDate = new SimpleDate(DT.Day, DT.Month, DT.Year);
+
+                        Reserved = Convert.ToBoolean(ODR["RESERVED"]);
+                        Price = Convert.ToDecimal(ODR["PRICE"]);
+
+                        if (BadHabits != "")
+                        {
+                            animals.Add(new Cat(ChipRegistrationNumber, DateOfBirth, Name, BadHabits));
+                        }
+                        else
+                        {
+                            animals.Add(new Dog(ChipRegistrationNumber, DateOfBirth, Name, LastWalkDate));
+                        }
+                    }
+                }
             }
         }
     }

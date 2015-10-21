@@ -28,7 +28,7 @@ namespace AnimalShelter
             InitializeComponent();
             animalTypeComboBox.SelectedIndex = 0;
             administration = new Administration();
-            administration.ReadAnimals();
+            administration.ReadAnimals(false);
             Database.Initialize();
         }
 
@@ -179,7 +179,7 @@ namespace AnimalShelter
 
         private void AdministrationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            administration.SaveAnimals();
+            administration.SaveAnimals(false);
         }
     }
 }
