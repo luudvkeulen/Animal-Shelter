@@ -29,6 +29,7 @@ namespace AnimalShelter
             animalTypeComboBox.SelectedIndex = 0;
             administration = new Administration();
             administration.ReadAnimals();
+            Database.Initialize();
         }
 
         private void TestData()
