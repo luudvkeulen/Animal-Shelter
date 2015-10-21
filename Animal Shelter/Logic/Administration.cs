@@ -55,7 +55,38 @@ namespace AnimalShelter
             }
             else
             {
-                
+                using(OracleConnection connection = Database.Connection)
+                {
+                    List<string> inserts = new List<string>();
+                    foreach (Animal animal in animals)
+                    {
+                        string sqlquery;
+                        string ChipRegistrationNumber = animal.ChipRegistrationNumber;
+                        string DateOfBirth = string.Format("{0}, {1}, {2}", animal.DateOfBirth.Day, animal.DateOfBirth.Month,animal.DateOfBirth.Year);
+                        int reserved = Convert.ToInt32(animal.IsReserved);
+                        string Name = animal.Name;
+                        if (animal is Cat)
+                        {
+                            Cat cat = (Cat)animal;
+                            sqlquery = string.Format("INSERT INTO ANIMALS (CHIPREGISTRATIONNUMBER, DATEOFBIRTH, NAME, RESERVED, PRICE, BADHABITS) VALUES ('{0}', TO_DATE('{1}', 'DD-MM-YYYY'), '{2}', '{3}', '{4}', '{5}')", ChipRegistrationNumber, DateOfBirth, Name, reserved, cat.Price, cat.BadHabits);
+                        }
+                        else
+                        {
+                            Dog dog = (Dog)animal;
+                            string LastWalkDate = string.Format("{0}, {1}, {2}", dog.LastWalkDate.Day, dog.LastWalkDate.Month, dog.LastWalkDate.Year);
+                            sqlquery = string.Format("INSERT INTO ANIMALS (CHIPREGISTRATIONNUMBER, DATEOFBIRTH, NAME, RESERVED, PRICE, LASTWALKDATE) VALUES ('{0}', TO_DATE('{1}', 'DD-MM-YYYY'), '{2}', '{3}', '{4}', TO_DATE('{5}', 'DD-MM-YYYY'))", ChipRegistrationNumber, DateOfBirth, Name, reserved, dog.Price, LastWalkDate);
+                        }
+
+                        inserts.Add(sqlquery);
+                    }
+
+                    OracleCommand OC;
+                    foreach(string insert in inserts)
+                    {
+                        OC = new OracleCommand(insert, connection);
+                        OC.ExecuteNonQuery();
+                    }
+                }
             }
         }
 
