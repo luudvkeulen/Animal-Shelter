@@ -43,7 +43,7 @@ namespace AnimalShelter
                                 , PRICE NUMBER(6,2) NOT NULL
                                 , LASTWALKDATE DATE
                                 , BADHABITS VARCHAR2(255) 
-                                , CONSTRAINT TABLE1_PK PRIMARY KEY 
+                                , CONSTRAINT ANIMALS_PK PRIMARY KEY 
                                   (
                                     CHIPREGISTRATIONNUMBER 
                                   )
