@@ -19,36 +19,5 @@ namespace AnimalShelter
                 return connection;
             }
         }
-
-        public static void Initialize()
-        {
-            using (Connection)
-            {
-                string CommandString = "SELECT TABLE_NAME FROM ALL_TABLES WHERE TABLE_NAME = 'ANIMALS'";
-                OracleCommand OC = new OracleCommand(CommandString, Connection);
-                try
-                {
-                    OracleDataReader ODR = OC.ExecuteReader();
-                    if (ODR.HasRows)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        CommandString = 
-                        @"CREATE TABLE ANIMALS 
-                        (CHIPREGISTRATIONNUMBER VARCHAR2(5) NOT NULL, 
-                        ISRESERVED NUMBER(1) DEFAULT 0 NOT NULL, 
-                        NAME VARCHAR2(255) NOT NULL, 
-                        DATEOFBIRTH DATE NOT NULL, 
-                        CONSTRAINT ANIMALS_PK PRIMARY KEY(CHIPREGISTRATIONNUMBER))";
-                    }
-                }
-                catch (OracleException OE)
-                {
-                    System.Diagnostics.Debug.Write(OE.Message);
-                }
-            }
-        }
     }
 }
