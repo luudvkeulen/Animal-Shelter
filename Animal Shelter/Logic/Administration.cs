@@ -84,7 +84,11 @@ namespace AnimalShelter
                     foreach(string insert in inserts)
                     {
                         OC = new OracleCommand(insert, connection);
-                        OC.ExecuteNonQuery();
+                        try
+                        {
+                            OC.ExecuteNonQuery();
+                        }
+                        catch { }
                     }
                 }
             }
@@ -133,8 +137,10 @@ namespace AnimalShelter
 
                         DateTime DT = DateTime.Parse(ODR["DATEOFBIRTH"].ToString());
                         DateOfBirth = new SimpleDate(DT.Day, DT.Month, DT.Year);
-
-                        DT = DateTime.Parse(ODR["LASTWALKDATE"].ToString());
+                        if (ODR["LASTWALKDATE"].ToString() != "")
+                        {
+                            DT = DateTime.Parse(ODR["LASTWALKDATE"].ToString());
+                        }
                         LastWalkDate = new SimpleDate(DT.Day, DT.Month, DT.Year);
 
                         Reserved = Convert.ToBoolean(ODR["RESERVED"]);
