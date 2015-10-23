@@ -148,11 +148,16 @@ namespace AnimalShelter
 
                         if (BadHabits != "")
                         {
-                            animals.Add(new Cat(ChipRegistrationNumber, DateOfBirth, Name, BadHabits));
+                            Cat cat = new Cat(ChipRegistrationNumber, DateOfBirth, Name, BadHabits);
+                            cat.IsReserved = Reserved;
+                            animals.Add(cat);
+
                         }
                         else
                         {
-                            animals.Add(new Dog(ChipRegistrationNumber, DateOfBirth, Name, LastWalkDate));
+                            Dog dog = new Dog(ChipRegistrationNumber, DateOfBirth, Name, LastWalkDate);
+                            dog.IsReserved = Reserved;
+                            animals.Add(dog);
                         }
                     }
                 }
