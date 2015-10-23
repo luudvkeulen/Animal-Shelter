@@ -58,6 +58,7 @@ namespace AnimalShelter
                 using(OracleConnection connection = Database.Connection)
                 {
                     List<string> inserts = new List<string>();
+                    inserts.Add("TRUNCATE TABLE ANIMALS");
                     foreach (Animal animal in animals)
                     {
                         string sqlquery;
